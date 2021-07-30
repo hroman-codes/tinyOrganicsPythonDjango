@@ -5,9 +5,13 @@
         <title>Polls</title>
     </head>
     <body>
+
+        <h1>Customer Form</h1>
+
+        {% comment %} the API state representation
         <strong>Api Call</strong>
         {% for i in response %}
-        {{i.recipes}}
-        {% endfor %}
+        {{i}}
+        {% endfor %} {% endcomment %}
     </body>
 </html>
