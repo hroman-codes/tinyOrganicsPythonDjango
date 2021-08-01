@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import Model
 
 # Create your models here.
-class CustomerForm(models.Model):
+class CustomerModelForm(models.Model):
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     email = models.EmailField(max_length=254)

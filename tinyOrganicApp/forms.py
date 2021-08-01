@@ -1,4 +1,15 @@
 from django import forms 
 
-class Customer(forms.Form):
-    firstName = forms.CharField(label='First name', max_length=100)
+from .models import CustomerModelForm
+
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = CustomerModelForm
+        fields = [
+            'firstName',
+            'lastName',
+            'email',
+            'childFirstName',
+            'childLastName',
+            'anyAlergies'
+        ]
