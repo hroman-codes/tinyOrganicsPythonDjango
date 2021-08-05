@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import CustomerForm
-from .models import CustomerModelForm
+from .models import CustomerFormModel
 import requests
 
 # Create your views here.
