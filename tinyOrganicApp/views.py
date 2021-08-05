@@ -17,6 +17,7 @@ def form(request):
     form = CustomerForm(request.POST or None)
     if form.is_valid():
         form.save()
+        form = CustomerForm()
 
     context = {
         'form': form
