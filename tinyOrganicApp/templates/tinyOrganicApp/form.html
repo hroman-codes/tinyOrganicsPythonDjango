@@ -6,10 +6,17 @@
     </head>
     <body>
 
+        <h1>API Call</h1>
+        {% for allergen in allergens %}
+        {{ allergen.name }}
+        {% endfor %}
+
         <h1>Customer Form</h1>
         <form method='POST'> {% csrf_token %}
             {{ form.as_p }}
             <input type='submit' value='Save' />
         </form>
+
+    {% comment %} {% block content %} {% endblock content %} {% endcomment %}
     </body>
 </html>
