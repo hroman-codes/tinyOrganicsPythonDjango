@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Form</title>
-    </head>
-    <body>
+{% extends 'tinyOrganicApp/base.html' %}
 
-        <h1>API Call</h1>
-        {% for allergen in allergens %}
-        {{ allergen.name }}
-        {% endfor %}
+{% block content %}
 
-        <h1>Customer Form</h1>
-        <form method='POST'> {% csrf_token %}
-            {{ form.as_p }}
-            <input type='submit' value='Save' />
-        </form>
+    <h1>Customer Form</h1>
+    <form method='POST'> {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='Save' />
+    </form>
 
-    {% comment %} {% block content %} {% endblock content %} {% endcomment %}
-    </body>
-</html>
+{% endblock %}

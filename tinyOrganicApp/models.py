@@ -2,23 +2,26 @@ from django.db import models
 from django.db.models import Model
 
 from multiselectfield import MultiSelectField
+import requests
 
 # Create your models here.
-class CustomerFormModel(models.Model):
-    allergens = (
-        (1, 'milk'),
-        (2, 'eggs'),
-        (3, 'soybean'),
-        (4, 'fish'),
-        (5, 'shellfish'),
-        (6, 'treenuts'),
-        (7, 'peanuts'),
-        (8, 'wheat')
-    )
+def fetchAllergens(requests):
+        response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/allergens/')
+        allergens = response.json()
+        listOfAllergens = []
 
-    firstName = models.CharField(max_length=100)
-    lastName = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254)
-    childFirstName = models.CharField(max_length=100)
-    childLastName = models.CharField(max_length=100)
-    anyAlergies = MultiSelectField(choices = allergens, max_choices = 8, max_length = 8)
+        for allergen in allergens:
+            print(allergen['name'])
+            listOfAllergens.append((allergen['name'], allergen['name']))
+        
+        print('>>>', listOfAllergens)
+
+        return listOfAllergens
+
+class CustomerFormModel(models.Model):
+    First_Name = models.CharField(max_length=100)
+    Last_Name = models.CharField(max_length=100)
+    Email = models.EmailField(max_length=254)
+    Child_First_Name = models.CharField(max_length=100)
+    Child_Last_Name = models.CharField(max_length=100)
+    Any_Allergies = MultiSelectField(choices = fetchAllergens(requests))
