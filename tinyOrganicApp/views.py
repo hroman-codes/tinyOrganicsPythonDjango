@@ -50,15 +50,19 @@ def filteredRecipesTest(request):
         return False if rec in badRecipes else True
 
     # save the filtered recipes in a variable 
-    filterRecipes = filter(filterRecipe, recipeNames)
+    filteredRecipes = filter(filterRecipe, recipeNames)
+    listFilteredRecipes = tuple(filteredRecipes)
+
     print('badRecipes >>', badRecipes)
-    print('filterRecipes', list(filterRecipes))
+    print('filteredRecipes', list(filteredRecipes))
+    # print('listFilteredRecipes', listFilteredRecipes)
                 
     # send it to the context object 
     # >> use the template to loop through it and spit out all the filtered recipes
     context = {
         'object': obj,
-        'filterRecipes': filterRecipes,
+        'listFilteredRecipes': listFilteredRecipes,
+        'badRecipes': badRecipes
     }
 
     return render(request, 'tinyOrganicApp/filteredRecipes.html', context)
