@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import CustomerForm
 from .models import CustomerFormModel
 import requests
+from django.shortcuts import redirect
 
 # Create your views here.
 def index(request):
@@ -13,6 +14,7 @@ def form(request):
     if form.is_valid():
         form.save()
         form = CustomerForm()
+        return redirect('filteredRecipes.html')
 
     context = {
         'form': form,
