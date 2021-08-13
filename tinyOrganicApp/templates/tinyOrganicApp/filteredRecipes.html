@@ -11,4 +11,14 @@
 <p>Child Last Name: {{ object.Child_Last_Name }}</p>
 <p>Allergies: {{ object.Any_Allergies }}</p>
 
+<h1>Recipes you can use based on your allergens 👍</h1>
+{% for filteredRecipe in listFilteredRecipes %}
+    <li> ✅ {{ filteredRecipe }}</li>
+{% endfor %}
+
+<h1>Just for the record don't touch these at ALL!! 🙅‍♂️</h1>
+{% for br in badRecipes %}
+    <li> ❌ {{ br }}</li>
+{% endfor %}
+
 {% endblock %}
