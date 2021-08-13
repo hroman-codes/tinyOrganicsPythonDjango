@@ -21,7 +21,6 @@ def form(request):
     }
 
     return render(request, 'tinyOrganicApp/form.html', context)
-    # return HttpResponseRedirect('/filteredRecipes')
 
 def filteredRecipesTest(request):
     # get the last entry in the DB 

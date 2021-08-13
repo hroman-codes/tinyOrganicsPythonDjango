@@ -5,7 +5,12 @@
 </head>
 <body>
     {% block content %}
-    <h1>Hello Tiny Organics hire your boy for this job, im trying to eat out here!</h1>
+    <img src='https://cdn.shopify.com/s/files/1/0018/4650/9667/files/Tiny-Logos-ALL-01_1_6f7a4e61-2612-4f4b-8327-62b0ed2413be_180x.png?v=1624156432'>
+    <p>Hello Tiny Organics hire your boy for this job, im trying to eat out here!</p>
+
+    <p>Fill out this quick form to find out what kind of recipes you can eat.</p>
+    <a href="{% url 'form' %}#container"><button type='button'>Can I Eat?</button></a>
+    {% comment %} <button type='button'>Can I Eat?</button> {% endcomment %}
     {% endblock %}
 </body>
 </html>
