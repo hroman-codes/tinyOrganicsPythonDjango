@@ -26,7 +26,6 @@ def filteredRecipesTest(request):
     # get the last entry in the DB 
     # specifically the allergens 
     obj = CustomerFormModel.objects.last()
-    print('obj.Any_Allergies >>>', obj.Any_Allergies)
     
     # fetch the recipes API once the LOADS || on init
     response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/recipes/')
@@ -53,10 +52,6 @@ def filteredRecipesTest(request):
     # save the filtered recipes in a variable 
     filteredRecipes = filter(filterRecipe, recipeNames)
     listFilteredRecipes = tuple(filteredRecipes)
-
-    print('badRecipes >>', badRecipes)
-    print('filteredRecipes', list(filteredRecipes))
-    # print('listFilteredRecipes', listFilteredRecipes)
                 
     # send it to the context object 
     # >> use the template to loop through it and spit out all the filtered recipes

@@ -14,8 +14,6 @@ def fetchAllergens(requests):
             print(allergen['name'])
             listOfAllergens.append((allergen['name'], allergen['name']))
         
-        print('>>>', listOfAllergens)
-
         return listOfAllergens
 
 class CustomerFormModel(models.Model):
