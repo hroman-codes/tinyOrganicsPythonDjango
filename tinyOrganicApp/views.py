@@ -9,7 +9,6 @@ def index(request):
     return render(request, 'tinyOrganicApp/base.html')
 
 def form(request):
-     
     form = CustomerForm(request.POST or None)
     if form.is_valid():
         form.save()
@@ -23,20 +22,43 @@ def form(request):
     # return HttpResponseRedirect('/filteredRecipes')
 
 def filteredRecipesTest(request):
-    obj = CustomerFormModel.objects.get(id=1)
-    print(obj)
+    # get the last entry in the DB 
+    # specifically the allergens 
+    obj = CustomerFormModel.objects.last()
+    print('obj.Any_Allergies >>>', obj.Any_Allergies)
+    
+    # fetch the recipes API once the LOADS || on init
+    response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/recipes/')
+    recipes = response.json()
 
-    # context = {
-    #     'First_Name': obj.First_Name,
-    #     'Last_Name': obj.Last_Name,
-    #     'Email': obj.Email,
-    #     'Child_First_Name': obj.Child_First_Name,
-    #     'Child_Last_Name': obj.Child_Last_Name,
-    #     'Any_Allergies': obj.Any_Allergies,
-    # }
+    badRecipes = []
+    recipeNames = []
+    
+    # loop through the recipes against the allergens
+        # - target the allergen property save that in a var for clarity 
+        # - if the allergens array contains 
+    for recipe in recipes:
+        recipeNames.append(recipe['name'])
 
+        for allergen in recipe['allergens']:
+            print('allergen >>>', allergen)
+            if obj.Any_Allergies.count(allergen) > 0:
+                badRecipes.append(recipe['name'])
+
+    # helper filter function to sniff out the good recipes 
+    def filterRecipe(rec):
+        return False if rec in badRecipes else True
+
+    # save the filtered recipes in a variable 
+    filterRecipes = filter(filterRecipe, recipeNames)
+    print('badRecipes >>', badRecipes)
+    print('filterRecipes', list(filterRecipes))
+                
+    # send it to the context object 
+    # >> use the template to loop through it and spit out all the filtered recipes
     context = {
-        'object': obj
+        'object': obj,
+        'filterRecipes': filterRecipes,
     }
 
     return render(request, 'tinyOrganicApp/filteredRecipes.html', context)
