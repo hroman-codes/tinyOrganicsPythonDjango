@@ -1,1 +1,1 @@
-web: gunicorn tinyOrganics.tinyOrganics.wsgi --log-file -
+web: gunicorn tinyOrganics.tinyOrganics.wsgi
