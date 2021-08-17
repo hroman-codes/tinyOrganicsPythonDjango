@@ -1,1 +1,1 @@
-web: gunicorn tinyOrganics.tinyOrganics.wsgi
+web: gunicorn YOUR_APP_NAME.wsgi
