@@ -11,7 +11,6 @@ def fetchAllergens(requests):
         listOfAllergens = []
 
         for allergen in allergens:
-            print(allergen['name'])
             listOfAllergens.append((allergen['name'], allergen['name']))
         
         return listOfAllergens
