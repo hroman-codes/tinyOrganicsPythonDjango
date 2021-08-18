@@ -3,7 +3,7 @@
 >A feature to help TinyOrganics filter out recipes that do NOT contain any ingredients that a child is allergic to. Mock API's for recipes and allergens provided by TinyOrganics..
 
 ### Live Demo
-[https://agile-gorge-80097.herokuapp.com/](https://agile-gorge-80097.herokuapp.com/)
+[https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/](https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/)
 
 ### Process
 ![Process](static/img/process.png)
@@ -44,6 +44,7 @@ Add confirmation message after submit
 - Add loading state on redirect to recipe page
 
 ### Help from the Twitter community
- - [Help with ModuleNotFoundError](https://twitter.com/builtByGetroman/status/1420869568097136643)
+- [Help with ModuleNotFoundError](https://twitter.com/builtByGetroman/status/1420869568097136643)
 - [.gitignore and Heroku Procfile Question](https://twitter.com/builtByGetroman/status/1427114717345107969)
-- [Installing Django on Heroku Dyno Problem](https://twitter.com/builtByGetroman/status/1427312853351112704)
+- [Installing Django on Heroku Dyno Problem #1](https://twitter.com/builtByGetroman/status/1427312853351112704)
+- [Installing Django on Heroku Dyno, tinyOrganics.settings Problem ](https://twitter.com/builtByGetroman/status/1427844662904168450)
