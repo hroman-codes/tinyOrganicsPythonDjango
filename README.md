@@ -1,4 +1,4 @@
-![Getroman Logo](staticfiles/img/BBG_header.png)
+![Getroman Logo](static/img/BBG_header.png)
 ## Description
 >A feature to help TinyOrganics filter out recipes that do NOT contain any ingredients that a child is allergic to. Mock API's for recipes and allergens provided by TinyOrganics..
 
@@ -6,7 +6,7 @@
 [https://agile-gorge-80097.herokuapp.com/](https://agile-gorge-80097.herokuapp.com/)
 
 ### Process
-![Process](staticfiles/img/process.png)
+![Process](static/img/process.png)
 
 ### Stories Completed
 1. As a new Customer, I should be able to access the home page which contains a form which I will enter my information such as:
