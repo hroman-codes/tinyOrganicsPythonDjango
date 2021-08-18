@@ -125,4 +125,4 @@ venv.bak/
 dmypy.json
 
 # settings file
-secret_settings.py
+.env
