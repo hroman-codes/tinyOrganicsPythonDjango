@@ -42,7 +42,6 @@
 - Add form validation
 Add confirmation message after submit
 - Add loading state on redirect to recipe page
-- 
 
 ### Help from the Twitter community
  - [Help with ModuleNotFoundError](https://twitter.com/builtByGetroman/status/1420869568097136643)
