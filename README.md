@@ -1,6 +1,6 @@
 ![Getroman Logo](static/img/BBG_header.png)
 ## Description
->A feature to help TinyOrganics filter out recipes that do NOT contain any ingredients that a child is allergic to. Mock API's for recipes and allergens provided by TinyOrganics..
+>A feature to help TinyOrganics filter out recipes that do NOT contain any ingredients that a child is allergic to. Mock API's for recipes and allergens provided by TinyOrganics.
 
 ### Live Demo
 [https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/](https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/)
