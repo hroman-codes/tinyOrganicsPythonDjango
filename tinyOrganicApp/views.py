@@ -41,7 +41,6 @@ def filteredRecipesTest(request):
         recipeNames.append(recipe['name'])
 
         for allergen in recipe['allergens']:
-            print('allergen >>>', allergen)
             if obj.Any_Allergies.count(allergen) > 0:
                 badRecipes.append(recipe['name'])
 
