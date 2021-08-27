@@ -1,22 +1,24 @@
 ![Getroman Logo](static/img/BBG_header.png)
 ## Description
 >A feature to help TinyOrganics filter out recipes that do NOT contain any ingredients that a child is allergic to. Mock API's for recipes and allergens provided by TinyOrganics.
-## Table of Contents 
-- [Live Demo](#LiveDemo)
-- [Process](#Process)
-- [Stories Completed](#StoriesCompleted)
-- [API End Points](#APIEndPoints)
-- [Tech Stack](#TechStack)
-- [Future Improvements](#FutureImprovements)
-- [Help from the Twitter community](#HelpfromtheTwittercommunity)
 
-### Live Demo
+![Demo](/static/img/demo.gif)
+## Table of Contents 
+- [Demo](#demo)
+- [Process](#process)
+- [Stories](#stories)
+- [API](#api)
+- [Tech](#tech)
+- [Improvements](#improvements)
+- [Assistance](#assistance)
+
+### Demo
 [https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/](https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/)
 
 ### Process
 ![Process](static/img/process.png)
 
-### Stories Completed
+### Stories
 1. As a new Customer, I should be able to access the home page which contains a form which I will enter my information such as:
    - first name 
    - last name
@@ -27,13 +29,13 @@
 
 2. As a new Customer , I should be given a list of recipes that do NOT contain any ingredients that my child is allergic to. 
 
-### API End Points
+### API
 - To fetch the list of recipes , make a GET request to 
     - https://60f5adf918254c00176dffc8.mockapi.io/api/v1/recipes/
 
 - To fetch the list of allergens, make a GET request to  
     - https://60f5adf918254c00176dffc8.mockapi.io/api/v1/allergens/
-### Tech Stack
+### Tech
 ##### ```Scaffolding```
 - The Django template language 
 ##### ```Web Framework```
@@ -41,7 +43,7 @@
 - Django
 ##### ```Deployment/Hosting Infrastructure```
 - Heroku
-### Future Improvements
+### Improvements
 - Update form page to reload on __init__ vs HTTP page reload
 - Include bread crumbs for ease of navigation for user
 - Move Frontend consumption from Django templating to React
@@ -53,7 +55,7 @@ Add confirmation message after submit
 - Cache responses from DB queries
 - Add login / account / auth functionality
 
-### Help from the Twitter community
+### Assistance
 - [Help with ModuleNotFoundError](https://twitter.com/builtByGetroman/status/1420869568097136643)
 - [.gitignore and Heroku Procfile Question](https://twitter.com/builtByGetroman/status/1427114717345107969)
 - [Installing Django on Heroku Dyno Problem #1](https://twitter.com/builtByGetroman/status/1427312853351112704)
