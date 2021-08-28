@@ -24,7 +24,9 @@ class HomePageTests(SimpleTestCase):
         response = self.client.get('/tinyOrganicApp/')
         self.assertContains(response, '<p>Hello Tiny Organics hire your boy for this job, im trying to eat out here!</p>')
 
-
+    def test_home_page_does_not_contain_incorrect_html(self):
+        response = self.client.get('/tinyOrganicApp/')
+        self.assertNotContains(response, '<h1>Delete Delete Delete<h1>')
 
 
 
