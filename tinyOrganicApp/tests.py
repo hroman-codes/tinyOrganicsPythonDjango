@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.test import SimpleTestCase
 from django.urls import reverse
 from . import views
+from .forms import CustomerForm
 
 import unittest
 
@@ -49,6 +50,19 @@ class FormPageTest(SimpleTestCase):
     def test_home_page_does_not_contain_incorrect_html(self):
         response = self.client.get('/tinyOrganicApp/form/#container')
         self.assertNotContains(response, '<h1>Delete Delete Delete<h1>')
+    
+    def test_empty_form(self):
+        form = CustomerForm()
+        self.assertIn("First_Name", form.fields)
+        self.assertIn("Last_Name", form.fields)
+        self.assertIn("Email", form.fields)
+        self.assertIn("Child_First_Name", form.fields)
+        self.assertIn("Child_Last_Name", form.fields)
+        self.assertIn("Any_Allergies", form.fields)
+
+
+
+
 
 
 
