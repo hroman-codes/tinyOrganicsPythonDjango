@@ -28,6 +28,29 @@ class HomePageTests(SimpleTestCase):
         response = self.client.get('/tinyOrganicApp/')
         self.assertNotContains(response, '<h1>Delete Delete Delete<h1>')
 
+class FormPageTest(SimpleTestCase):
+    def test_form_page_status_code(self):
+        response = self.client.get('/tinyOrganicApp/form/#container')
+        self.assertEquals(response.status_code, 200)
+
+    def test_view_url_by_name(self):
+        response = self.client.get(reverse('form'))
+        self.assertEquals(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('form'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'tinyOrganicApp/form.html')
+    
+    def test_home_page_contains_correct_html(self):
+        response = self.client.get('/tinyOrganicApp/form/#container')
+        self.assertContains(response, "<h1>Customer Form 📝</h1>")
+
+    def test_home_page_does_not_contain_incorrect_html(self):
+        response = self.client.get('/tinyOrganicApp/form/#container')
+        self.assertNotContains(response, '<h1>Delete Delete Delete<h1>')
+
+
 
 
 
