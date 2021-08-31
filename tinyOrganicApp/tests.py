@@ -8,6 +8,11 @@ import unittest
 
 # Create a user to test DB injection on HTTP Post 
 
+class TestAPI(SimpleTestCase):
+    def test_get_api_from_json(self):
+        resp = self.api_client.get('http://localhost:8000/api/whatever/?format=json/api/v1/recipes/', format='json')
+        self.assertValidJSONResponse(resp)
+
 
 class HomePageTests(SimpleTestCase):
     def test_home_page_status_code(self):
@@ -79,13 +84,6 @@ class FormPageTest(SimpleTestCase):
 
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 6)
-
-# class recipePageTest(SimpleTestCase):
-#     def test_recipe_page_status_code(self):
-#         response = self.client.get('/tinyOrganicApp/form/filteredRecipes.html#container')
-#         self.assertEquals(response.status_code, 200)
-
-
 
 
 
