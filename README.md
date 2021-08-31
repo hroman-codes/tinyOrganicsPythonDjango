@@ -44,10 +44,13 @@
 ##### ```Deployment/Hosting Infrastructure```
 - Heroku
 ### Improvements
+##### ```done```
+- ✅ Add unit test
+
+##### ```todo```
 - Update form page to reload on __init__ vs HTTP page reload
 - Include bread crumbs for ease of navigation for user
 - Move Frontend consumption from Django templating to React
-- Add unit test
 - Hide form data on form submission
 - Add form validation
 Add confirmation message after submit
