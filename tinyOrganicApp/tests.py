@@ -6,7 +6,9 @@ from .forms import CustomerForm
 
 import unittest
 
-# Create your tests here.
+# Create a user to test DB injection on HTTP Post 
+
+
 class HomePageTests(SimpleTestCase):
     def test_home_page_status_code(self):
         response = self.client.get('/tinyOrganicApp/')
@@ -43,11 +45,11 @@ class FormPageTest(SimpleTestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'tinyOrganicApp/form.html')
     
-    def test_home_page_contains_correct_html(self):
+    def test_form_page_contains_correct_html(self):
         response = self.client.get('/tinyOrganicApp/form/#container')
         self.assertContains(response, "<h1>Customer Form 📝</h1>")
 
-    def test_home_page_does_not_contain_incorrect_html(self):
+    def test_form_page_does_not_contain_incorrect_html(self):
         response = self.client.get('/tinyOrganicApp/form/#container')
         self.assertNotContains(response, '<h1>Delete Delete Delete<h1>')
     
@@ -60,6 +62,28 @@ class FormPageTest(SimpleTestCase):
         self.assertIn("Child_Last_Name", form.fields)
         self.assertIn("Any_Allergies", form.fields)
 
+    def test_form_has_valid_data(self):
+        form = CustomerForm(data={
+            'First_Name': 'Heriberto',
+            'Last_Name': 'Roman',
+            'Email': 'builtbygetroman@gmail.com',
+            'Child_First_Name': 'Elijah',
+            'Child_Last_Name': 'Roman',
+            'Any_Allergies': ['shellfish']
+        })
+
+        self.assertTrue(form.is_valid())
+
+    def test_form_no_data(self):
+        form = CustomerForm(data={})
+
+        self.assertFalse(form.is_valid())
+        self.assertEquals(len(form.errors), 6)
+
+# class recipePageTest(SimpleTestCase):
+#     def test_recipe_page_status_code(self):
+#         response = self.client.get('/tinyOrganicApp/form/filteredRecipes.html#container')
+#         self.assertEquals(response.status_code, 200)
 
 
 
@@ -68,21 +92,5 @@ class FormPageTest(SimpleTestCase):
 
 
 
-
-
-
-
-
-
-
-
-# class ApiCallsTestCase(TestCase):
-#     def setUp(self):
-#         self.client = Client()
-
-#     def was_allergens_called(self):
-#         response = self.client.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/allergens/')
-
-#         self.assertEquals(response.status_code, 200, 'API dont work bruh!')
 
 
