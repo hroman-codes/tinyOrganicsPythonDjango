@@ -13,7 +13,7 @@
 - [Assistance](#assistance)
 
 ### Demo
-[https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/](https://agile-gorge-80097.herokuapp.com/tinyOrganicApp/)
+[https://tiny-organics-recipe-filter.herokuapp.com/tinyOrganicApp/](https://tiny-organics-recipe-filter.herokuapp.com/tinyOrganicApp/)
 
 ### Process
 ![Process](static/img/process.png)
