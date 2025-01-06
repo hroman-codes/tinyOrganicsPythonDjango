@@ -13,7 +13,7 @@
 - [Assistance](#assistance)
 
 ### Demo
-[TBD](https://tiny-organics-recipe-filter.herokuapp.com/tinyOrganicApp/)
+[Demo](https://tinyorganicspythondjango.fly.dev/tinyOrganicApp/)
 
 ### Process
 ![Process](static/img/process.png)
