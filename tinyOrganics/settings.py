@@ -11,21 +11,32 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+import environ
+import sentry_sdk
 
 
-load_dotenv()
+env = environ.Env(  # <-- Updated!
+    # set casting, default value
+    DEBUG=(bool, False),
+)
 
+sentry_sdk.init(
+    dsn="https://cd2ed8f812237ea0a3079e6e89de38a9@o4508264119468032.ingest.us.sentry.io/4508598687432704",
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Take environment variables from .env file
+environ.Env.read_env(BASE_DIR / '.env')  # <-- Updated!
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '.fly.dev', 'https://tinyorganicspythondjango.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev'] 
 
 # Application definition
 INSTALLED_APPS = [
@@ -34,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
     # own
@@ -77,28 +89,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tinyOrganics.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-# DATABASES = {'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('NAME'),
-#         'USER': os.environ.get('USER'),
-#         'PASSWORD': os.environ.get('PASSWORD'),
-#         'HOST': os.environ.get('HOST'),
-#         'PORT': os.environ.get('PORT'),
-#         'CONN_MAX_AGE': 500,
-# }}
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # read os.environ['DATABASE_URL']
+    'default': env.db()  # <-- Updated!
 }
 
+# Using this because of FLY.io 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
